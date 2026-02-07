@@ -190,15 +190,31 @@ function App() {
       <header className="app-header">
         <div className="header-content">
           <div className="header-brand">
-            <img src="/icons/logo.svg" alt="Crumb Logo" className="header-logo" />
-            <div>
+            <img src="/logo-bread.png" alt="Crumb Logo" className="header-logo" />
+            <div className="header-text">
               <h1>Crumb</h1>
               <p className="tagline">Perfect Bread, Perfect Timing</p>
             </div>
           </div>
           <div className="header-actions">
-            <button className="theme-toggle" onClick={toggleTheme} title="Theme wechseln">
-              {isDarkMode ? '☀️' : '🌙'}
+            <button className="icon-btn" onClick={toggleTheme} title="Theme wechseln">
+              {isDarkMode ? (
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="5"/>
+                  <line x1="12" y1="1" x2="12" y2="3"/>
+                  <line x1="12" y1="21" x2="12" y2="23"/>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                  <line x1="1" y1="12" x2="3" y2="12"/>
+                  <line x1="21" y1="12" x2="23" y2="12"/>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+              )}
             </button>
             <div className="user-menu-container">
               <button className="user-avatar" onClick={() => setView('settings')}>
@@ -231,38 +247,65 @@ function App() {
       </header>
 
       <nav className="nav-tabs">
-        <button 
-          className={view === 'list' ? 'active' : ''}
-          onClick={() => setView('list')}
-        >
-          Rezepte
-        </button>
-        <button 
-          className={view === 'import' ? 'active' : ''}
-          onClick={() => setView('import')}
-        >
-          Import
-        </button>
-        <button 
-          className={view === 'calculator' ? 'active' : ''}
-          onClick={() => setView('calculator')}
-        >
-          🧮 Rechner
-        </button>
-        <button 
-          className={view === 'settings' ? 'active' : ''}
-          onClick={() => setView('settings')}
-        >
-          ⚙️ Einstellungen
-        </button>
-        {scheduledBake && (
+        <div className="nav-tabs-content">
           <button 
-            className={view === 'baking' ? 'active baking' : 'baking'}
-            onClick={() => setView('baking')}
+            className={`nav-tab ${view === 'list' ? 'active' : ''}`}
+            onClick={() => setView('list')}
           >
-            ⏰ Backen läuft
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+            Rezepte
           </button>
-        )}
+          <button 
+            className={`nav-tab ${view === 'import' ? 'active' : ''}`}
+            onClick={() => setView('import')}
+          >
+            <svg viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+            Import
+          </button>
+          <button 
+            className={`nav-tab ${view === 'calculator' ? 'active' : ''}`}
+            onClick={() => setView('calculator')}
+          >
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="7" width="20" height="15" rx="2" ry="2"/>
+              <polyline points="17 2 12 7 7 2"/>
+            </svg>
+            Rechner
+          </button>
+          <button 
+            className={`nav-tab ${view === 'settings' ? 'active' : ''}`}
+            onClick={() => setView('settings')}
+          >
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 1v6m0 6v6M5.6 5.6l4.2 4.2m4.2 4.2l4.2 4.2M1 12h6m6 0h6M5.6 18.4l4.2-4.2m4.2-4.2l4.2-4.2"/>
+            </svg>
+            Einstellungen
+          </button>
+          {scheduledBake && (
+            <button 
+              className={`nav-tab ${view === 'baking' ? 'active' : ''}`}
+              onClick={() => setView('baking')}
+              style={{color: '#ff6b35', borderBottomColor: view === 'baking' ? '#ff6b35' : 'transparent'}}
+            >
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              Backen läuft
+            </button>
+          )}
+        </div>
       </nav>
 
       <main className="app-main">

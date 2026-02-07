@@ -32,21 +32,21 @@
   --brown-gradient-end: #6B5D4F;
 }
 
-/* Dark Mode Colors */
+/* Dark Mode Colors - Elegant & Premium */
 [data-theme="dark"] {
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2d2d2d;
-  --bg-tertiary: #242424;
-  --text-primary: #e0e0e0;
-  --text-secondary: #b0b0b0;
-  --text-tertiary: #808080;
-  --border-color: #404040;
-  --shadow: rgba(0, 0, 0, 0.3);
-  --shadow-hover: rgba(0, 0, 0, 0.5);
-  --brown-primary: #D2691E;
-  --brown-secondary: #CD853F;
-  --brown-light: #DEB887;
-  --brown-gradient-start: #D2691E;
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #222222;
+  --text-primary: #f5f5f5;
+  --text-secondary: #b8b8b8;
+  --text-tertiary: #888888;
+  --border-color: #2a2a2a;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --shadow-hover: rgba(0, 0, 0, 0.6);
+  --brown-primary: #D4A574;
+  --brown-secondary: #E8B887;
+  --brown-light: #F0D4A8;
+  --brown-gradient-start: #C8975F;
   --brown-gradient-end: #8B6F47;
 }
 
@@ -183,6 +183,7 @@ body {
   pointer-events: none;
   transform: translateY(-10px);
   transition: all 0.2s;
+  transition-delay: 0s; /* Instant hide */
   border: 1px solid var(--border-color);
   z-index: 10000;
 }
@@ -192,6 +193,15 @@ body {
   opacity: 1;
   pointer-events: all;
   transform: translateY(0);
+  transition-delay: 0.3s; /* 300ms delay before showing */
+}
+
+.user-menu-container:hover .user-dropdown {
+  transition-delay: 0s; /* Show immediately on avatar hover */
+}
+
+.user-dropdown:hover {
+  transition-delay: 0s; /* Keep visible while hovering dropdown */
 }
 
 .user-info {
@@ -1049,4 +1059,92 @@ body[data-app-version="0.5.0"] {
 /* Version marker v0.5.0 */
 .crumb-build-0-5-0 {
   --mockup-implemented: "yes";
+}
+
+/* Dark Mode Enhancements - Elegant & Premium */
+[data-theme="dark"] .recipe-card {
+  background: linear-gradient(145deg, #1a1a1a, #222222);
+  border-color: #2a2a2a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .recipe-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  border-color: var(--brown-primary);
+}
+
+[data-theme="dark"] .recipe-type-badge {
+  background: rgba(212, 165, 116, 0.15);
+  color: var(--brown-primary);
+  border: 1px solid rgba(212, 165, 116, 0.3);
+}
+
+[data-theme="dark"] .favorite-btn {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .btn {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: #2a2a2a;
+}
+
+[data-theme="dark"] .btn:hover {
+  background: rgba(212, 165, 116, 0.1);
+  border-color: var(--brown-primary);
+}
+
+[data-theme="dark"] .btn-primary {
+  background: linear-gradient(135deg, var(--brown-primary), var(--brown-gradient-end));
+  border-color: var(--brown-primary);
+}
+
+[data-theme="dark"] .filter-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: #2a2a2a;
+}
+
+[data-theme="dark"] .filter-btn:hover {
+  background: rgba(212, 165, 116, 0.1);
+  border-color: var(--brown-primary);
+}
+
+[data-theme="dark"] .filter-btn.active {
+  background: linear-gradient(135deg, var(--brown-primary), var(--brown-gradient-end));
+  border-color: var(--brown-primary);
+}
+
+[data-theme="dark"] .search-input {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: #2a2a2a;
+}
+
+[data-theme="dark"] .search-input:focus {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--brown-primary);
+  box-shadow: 0 4px 12px rgba(212, 165, 116, 0.2);
+}
+
+[data-theme="dark"] .modal {
+  background: linear-gradient(145deg, #1a1a1a, #222222);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] .empty-state-icon {
+  opacity: 0.15;
+}
+
+/* Subtle glow effects for premium feel */
+[data-theme="dark"] .app-header {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6), 
+              0 0 1px rgba(212, 165, 116, 0.1);
+}
+
+[data-theme="dark"] .fab {
+  background: linear-gradient(135deg, var(--brown-primary), var(--brown-gradient-end));
+  box-shadow: 0 4px 16px rgba(212, 165, 116, 0.4);
+}
+
+[data-theme="dark"] .fab:hover {
+  box-shadow: 0 6px 20px rgba(212, 165, 116, 0.6);
 }

@@ -77,7 +77,7 @@ function RecipeList({ recipes, onDelete, onSelect, onViewDetail, favorites, onTo
     return (
       <div className="recipe-list empty">
         <div className="empty-state">
-          <div className="empty-icon">🍞</div>
+          <img src="/logo-bread.png" alt="Noch keine Rezepte" className="empty-state-icon" style={{width: '120px', height: '120px', opacity: 0.3}} />
           <h3>Noch keine Rezepte</h3>
           <p>Importiere dein erstes Brotrezept oder erstelle eins manuell.</p>
         </div>
