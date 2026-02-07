@@ -301,7 +301,7 @@ body {
   cursor: pointer;
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: #666;
   border-bottom: 3px solid transparent;
   transition: all 0.2s;
   display: flex;
@@ -310,12 +310,12 @@ body {
 }
 
 .nav-tab:hover {
-  color: var(--brown-primary);
+  color: #8B7355;
 }
 
 .nav-tab.active {
-  color: var(--brown-primary);
-  border-bottom-color: var(--brown-primary);
+  color: #8B7355;
+  border-bottom-color: #8B7355;
 }
 
 .nav-tab svg {

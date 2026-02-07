@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './RecipeList.css';
-import RecipeFilter from './RecipeFilter';
 
 function RecipeList({ recipes, onDelete, onSelect, onViewDetail, favorites, onToggleFavorite, filters, onFilterChange }) {
+  const [searchQuery, setSearchQuery] = useState('');
+
   const formatDuration = (steps) => {
     const total = steps.reduce((sum, step) => sum + step.duration, 0);
     if (total < 60) {
@@ -23,11 +24,7 @@ function RecipeList({ recipes, onDelete, onSelect, onViewDetail, favorites, onTo
   };
 
   const hasNighttimeActions = (recipe) => {
-    // Check if recipe would require actions between 22:00 and 6:00
     const now = new Date();
-    const totalMinutes = recipe.steps.reduce((sum, step) => sum + step.duration, 0);
-    
-    // Simulate scheduling from now
     let currentTime = new Date(now);
     for (let step of recipe.steps) {
       const stepHour = currentTime.getHours();
@@ -39,17 +36,22 @@ function RecipeList({ recipes, onDelete, onSelect, onViewDetail, favorites, onTo
     return false;
   };
 
-  const getRecipeTypeBadge = (type) => {
+  const getRecipeTypeLabel = (type) => {
     switch (type) {
-      case 'sourdough': return { icon: '🥖', label: 'Sauerteig' };
-      case 'yeast': return { icon: '🍞', label: 'Hefe' };
-      case 'mixed': return { icon: '🥐', label: 'Gemischt' };
-      default: return { icon: '🍞', label: 'Andere' };
+      case 'sourdough': return 'Sauerteig';
+      case 'yeast': return 'Hefe';
+      case 'mixed': return 'Gemischt';
+      default: return 'Andere';
     }
   };
 
   // Apply filters
-  const filteredRecipes = recipes.filter(recipe => {
+  let filteredRecipes = recipes.filter(recipe => {
+    // Search filter
+    if (searchQuery && !recipe.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+      return false;
+    }
+
     // Favorites filter
     if (filters.showFavoritesOnly && !favorites.includes(recipe.id)) {
       return false;
@@ -87,112 +89,173 @@ function RecipeList({ recipes, onDelete, onSelect, onViewDetail, favorites, onTo
 
   return (
     <div className="recipe-list">
-      <h2>Meine Rezepte</h2>
-      
-      <RecipeFilter filters={filters} onFilterChange={onFilterChange} />
+      {/* Search Bar - Mockup Style */}
+      <div className="search-section">
+        <div className="search-container">
+          <svg className="search-icon" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input 
+            type="text" 
+            className="search-input" 
+            placeholder="Rezepte durchsuchen..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          {searchQuery && (
+            <button className="search-clear" onClick={() => setSearchQuery('')}>
+              <svg viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Filter Buttons - Mockup Style (NO ICONS!) */}
+      <div className="recipe-filters">
+        <button 
+          className={`filter-btn ${filters.recipeType === 'all' && !filters.showFavoritesOnly ? 'active' : ''}`}
+          onClick={() => onFilterChange({ ...filters, recipeType: 'all', showFavoritesOnly: false })}
+        >
+          Alle
+        </button>
+        <button 
+          className={`filter-btn ${filters.recipeType === 'sourdough' ? 'active' : ''}`}
+          onClick={() => onFilterChange({ ...filters, recipeType: 'sourdough', showFavoritesOnly: false })}
+        >
+          Sauerteig
+        </button>
+        <button 
+          className={`filter-btn ${filters.recipeType === 'yeast' ? 'active' : ''}`}
+          onClick={() => onFilterChange({ ...filters, recipeType: 'yeast', showFavoritesOnly: false })}
+        >
+          Hefe
+        </button>
+        <button 
+          className={`filter-btn ${filters.recipeType === 'mixed' ? 'active' : ''}`}
+          onClick={() => onFilterChange({ ...filters, recipeType: 'mixed', showFavoritesOnly: false })}
+        >
+          Gemischt
+        </button>
+        <button 
+          className={`filter-btn ${filters.showFavoritesOnly ? 'active' : ''}`}
+          onClick={() => onFilterChange({ ...filters, showFavoritesOnly: !filters.showFavoritesOnly })}
+        >
+          <svg viewBox="0 0 24 24" style={{width: '16px', height: '16px', marginRight: '0.375rem'}}>
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          Favoriten
+        </button>
+        <button 
+          className={`filter-btn ${filters.finishToday ? 'active' : ''}`}
+          onClick={() => onFilterChange({ ...filters, finishToday: !filters.finishToday })}
+        >
+          Heute fertig
+        </button>
+        <button 
+          className={`filter-btn ${filters.respectNighttime ? 'active' : ''}`}
+          onClick={() => onFilterChange({ ...filters, respectNighttime: !filters.respectNighttime })}
+        >
+          Nachtruhe OK
+        </button>
+      </div>
+
+      {/* Section Title - AFTER filters like mockup */}
+      <h2 className="section-title">Meine Rezepte</h2>
 
       {filteredRecipes.length === 0 ? (
         <div className="no-results">
           <p>Keine Rezepte gefunden, die den Filterkriterien entsprechen.</p>
         </div>
       ) : (
-        <div className="recipes-grid">
+        <div className="recipe-grid">
           {filteredRecipes.map((recipe) => {
             const isFavorite = favorites.includes(recipe.id);
-            const badge = getRecipeTypeBadge(recipe.recipeType);
             
             return (
-              <div key={recipe.id} className="recipe-card">
-                {recipe.image && (
-                  <div className="recipe-card-image" onClick={() => onViewDetail(recipe)}>
+              <div key={recipe.id} className="recipe-card" onClick={() => onViewDetail(recipe)}>
+                {/* Recipe Image - Fill card top completely */}
+                <div className="recipe-image">
+                  {recipe.image ? (
                     <img src={recipe.image} alt={recipe.name} />
-                    <div className="image-overlay">
-                      <span>Details ansehen</span>
+                  ) : (
+                    <img src="/logo-bread.svg" alt="Kein Bild" className="recipe-placeholder" />
+                  )}
+                  
+                  {/* Type Badge - Top Left */}
+                  <span className="recipe-type-badge">
+                    {getRecipeTypeLabel(recipe.recipeType)}
+                  </span>
+                  
+                  {/* Favorite Heart - Top Right */}
+                  <button 
+                    className={`favorite-btn ${isFavorite ? 'active' : ''}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onToggleFavorite(recipe.id);
+                    }}
+                    title={isFavorite ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Recipe Content */}
+                <div className="recipe-content">
+                  <h3 className="recipe-title">{recipe.name}</h3>
+                  
+                  {/* Meta Info - ONLY Time + Steps with clean icons */}
+                  <div className="recipe-meta">
+                    <div className="recipe-meta-item">
+                      <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                      </svg>
+                      {formatDuration(recipe.steps)}
+                    </div>
+                    <div className="recipe-meta-item">
+                      <svg viewBox="0 0 24 24">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                      </svg>
+                      {recipe.steps.length} Schritte
                     </div>
                   </div>
-                )}
-                
-                <div className="recipe-header">
-                  <h3 onClick={() => onViewDetail(recipe)} style={{ cursor: 'pointer' }}>
-                    {recipe.name}
-                  </h3>
+
+                  {/* Action Buttons - Mockup Style */}
                   <div className="recipe-actions">
                     <button 
-                      className={`favorite-btn ${isFavorite ? 'active' : ''}`}
+                      className="btn"
                       onClick={(e) => {
                         e.stopPropagation();
-                        onToggleFavorite(recipe.id);
+                        onViewDetail(recipe);
                       }}
-                      title={isFavorite ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
                     >
-                      {isFavorite ? '★' : '☆'}
+                      <svg viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                      </svg>
+                      Ansehen
                     </button>
                     <button 
-                      className="delete-btn"
+                      className="btn btn-primary"
                       onClick={(e) => {
                         e.stopPropagation();
-                        if (window.confirm(`"${recipe.name}" wirklich löschen?`)) {
-                          onDelete(recipe.id);
-                        }
+                        onSelect(recipe);
                       }}
-                      title="Rezept löschen"
                     >
-                      🗑️
+                      <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                      </svg>
+                      Planen
                     </button>
                   </div>
                 </div>
-
-                {recipe.source && (
-                  <div className="recipe-source">
-                    📎 {recipe.source}
-                  </div>
-                )}
-
-                <div className="recipe-stats">
-                  <div className="stat">
-                    <span className="stat-icon">⏱️</span>
-                    <span>{formatDuration(recipe.steps)}</span>
-                  </div>
-                  <div className="stat">
-                    <span className="stat-icon">📝</span>
-                    <span>{recipe.steps.length} Schritte</span>
-                  </div>
-                  {recipe.recipeType && (
-                    <div className="stat">
-                      <span className="stat-icon">{badge.icon}</span>
-                      <span>{badge.label}</span>
-                    </div>
-                  )}
-                </div>
-
-                <div className="recipe-badges">
-                  {canFinishToday(recipe) && (
-                    <span className="badge badge-today">⏰ Heute schaffbar</span>
-                  )}
-                  {!hasNighttimeActions(recipe) && (
-                    <span className="badge badge-nightfree">🌙 Nachtruhe OK</span>
-                  )}
-                </div>
-
-                <div className="recipe-steps-preview">
-                  {recipe.steps.slice(0, 3).map((step, index) => (
-                    <div key={index} className="step-preview">
-                      {index + 1}. {step.name}
-                    </div>
-                  ))}
-                  {recipe.steps.length > 3 && (
-                    <div className="more-steps">
-                      +{recipe.steps.length - 3} weitere
-                    </div>
-                  )}
-                </div>
-
-                <button 
-                  className="start-planning-btn"
-                  onClick={() => onSelect(recipe)}
-                >
-                  Backzeit planen
-                </button>
               </div>
             );
           })}
