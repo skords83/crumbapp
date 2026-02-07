@@ -1,48 +1,14 @@
 /*
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║   ██████╗ ██████╗ ██╗   ██╗███╗   ███╗██████╗                              ║
-║  ██╔════╝ ██╔══██╗██║   ██║████╗ ████║██╔══██╗                             ║
-║  ██║      ██████╔╝██║   ██║██╔████╔██║██████╔╝                             ║
-║  ██║      ██╔══██╗██║   ██║██║╚██╔╝██║██╔══██╗                             ║
-║  ╚██████╗ ██║  ██║╚██████╔╝██║ ╚═╝ ██║██████╔╝                             ║
-║   ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝                              ║
-║                                                                              ║
-║  Perfect Bread, Perfect Timing                                              ║
-║  Version: 0.4.4 - UI Variante 3                                            ║
-║  Build: 2026-02-07 13:45 CET                                               ║
-║                                                                              ║
-║  CRITICAL CACHE INVALIDATION BUILD                                          ║
-║  This version includes massive changes to force Webpack cache refresh       ║
-║  Previous builds: 0.4.0-0.4.3 had cache issues                              ║
-║  Expected: NEW CSS hash (NOT main.18d2e542.css)                             ║
-║                                                                              ║
-║  Fixes in v0.4.4:                                                            ║
-║  • Fixed dropdown z-index (user menu now appears correctly)                ║
-║  • Project cleanup (removed 15+ obsolete files)                             ║
-║  • Simplified README and documentation                                      ║
-║  • Forced cache invalidation with massive CSS header                        ║
-║                                                                              ║
-║  Features:                                                                   ║
-║  • Minimalist line icons (SVG)                                              ║
-║  • Clean card designs                                                        ║
-║  • Responsive bottom navigation                                             ║
-║  • Dark mode support                                                         ║
-║  • 3 color themes (Natural, Modern, Premium)                                ║
-║  • Material Design principles                                               ║
-║                                                                              ║
-║  Tech Stack:                                                                 ║
-║  • React 18                                                                  ║
-║  • CSS Variables for theming                                                ║
-║  • CSS Grid & Flexbox                                                        ║
-║  • Progressive Web App (PWA)                                                ║
-║  • PostgreSQL backend                                                        ║
-║                                                                              ║
-║  IF YOU SEE THIS COMMENT IN BUILT CSS, THE BUILD WORKED!                    ║
-║  IF YOU STILL SEE main.18d2e542.css, CACHE IS BROKEN!                      ║
-║                                                                              ║
+║  CRUMB v0.4.4 - Cache Invalidation Build                                    ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 */
+
+/* CACHE BUSTER: Adding invisible element to force new hash */
+.crumb-version-0-4-4::before {
+  content: "v0.4.4";
+  display: none;
+}
 
 * {
   margin: 0;
@@ -590,4 +556,16 @@ button:disabled {
   .fab {
     display: none;
   }
+}
+
+/* Version marker - forces Webpack to create new hash */
+.crumb-build-marker {
+  --build-version: "0.4.4";
+  --build-date: "2026-02-07";
+  --build-time: "15:15";
+}
+
+/* Cache buster - this code WILL be in minified output */
+body[data-app="crumb"] {
+  --app-version: "0.4.4";
 }
