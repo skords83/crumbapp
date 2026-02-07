@@ -94,10 +94,7 @@ function Auth({ onLogin }) {
       <div className="auth-card">
         <div className="auth-header">
           <div className="auth-logo">
-            <svg width="48" height="48" viewBox="0 0 200 200" fill="none">
-              <path d="M 30 80 C 30 60, 52 45, 82 45 C 102 45, 117 50, 122 66 L 122 129 C 117 144, 102 150, 82 150 C 52 150, 30 135, 30 115 Z" fill="currentColor"/>
-              <path d="M 122 66 L 122 129 C 122 139, 132 145, 142 145 L 142 50 C 132 50, 122 56, 122 66 Z" fill="currentColor" opacity="0.7"/>
-            </svg>
+            <img src="/logo-bread.svg" alt="Crumb" style={{width: '64px', height: '64px', color: 'var(--brown-primary)'}} />
           </div>
           <h1>Crumb</h1>
           <p className="auth-tagline">Perfect Bread, Perfect Timing</p>

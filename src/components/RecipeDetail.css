@@ -332,3 +332,212 @@
     gap: 0.5rem;
   }
 }
+
+/* v0.5.4 - Clean SVG Icons */
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.back-button:hover {
+  border-color: var(--brown-primary);
+  color: var(--brown-primary);
+}
+
+.back-button svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.header-actions .icon-btn {
+  width: 42px;
+  height: 42px;
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.header-actions .icon-btn:hover {
+  border-color: var(--brown-primary);
+  color: var(--brown-primary);
+}
+
+.header-actions .icon-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+.header-actions .favorite-button.active {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.header-actions .favorite-button.active svg {
+  fill: #dc3545;
+  stroke: #dc3545;
+}
+
+.recipe-source {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.recipe-source .source-icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+.recipe-source a {
+  color: var(--brown-primary);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.recipe-source a:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.meta-icon {
+  width: 24px;
+  height: 24px;
+  stroke: var(--brown-primary);
+  fill: none;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+.section-icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  margin-right: 0.5rem;
+}
+
+.recipe-ingredients h2,
+.recipe-steps h2 {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.inline-icon {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  margin-right: 0.25rem;
+}
+
+.ingredient-temp,
+.ingredient-notes {
+  display: flex;
+  align-items: center;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.step-icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+.step-header-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.step-header-detail h3 {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.step-duration {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.duration-icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+.detail-actions {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.detail-actions .btn {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.detail-actions .btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}

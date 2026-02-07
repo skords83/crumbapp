@@ -66,7 +66,7 @@ function App() {
   // Save recipes to localStorage whenever they change
   useEffect(() => {
     if (recipes.length > 0) {
-      localStorage.setItem('brotzeit-recipes', JSON.stringify(recipes));
+      localStorage.setItem('crumb-recipes', JSON.stringify(recipes));
     }
   }, [recipes]);
 
@@ -190,7 +190,7 @@ function App() {
       <header className="app-header">
         <div className="header-content">
           <div className="header-brand">
-            <img src="/logo-bread.png" alt="Crumb Logo" className="header-logo" />
+            <img src="/logo-bread.svg" alt="Crumb Logo" className="header-logo" />
             <div className="header-text">
               <h1>Crumb</h1>
               <p className="tagline">Perfect Bread, Perfect Timing</p>

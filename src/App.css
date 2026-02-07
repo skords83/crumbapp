@@ -182,26 +182,34 @@ body {
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
-  transition: all 0.2s;
-  transition-delay: 0s; /* Instant hide */
+  transition: opacity 0.2s, transform 0.2s;
+  transition-delay: 0s;
   border: 1px solid var(--border-color);
   z-index: 10000;
 }
 
-.user-menu-container:hover .user-dropdown,
+.user-menu-container:hover .user-dropdown {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+  transition-delay: 0.1s; /* Small delay on hover */
+}
+
 .user-dropdown:hover {
   opacity: 1;
   pointer-events: all;
   transform: translateY(0);
-  transition-delay: 0.3s; /* 300ms delay before showing */
+  transition-delay: 0s;
 }
 
-.user-menu-container:hover .user-dropdown {
-  transition-delay: 0s; /* Show immediately on avatar hover */
+/* Grace period: dropdown stays visible for 700ms after leaving avatar */
+.user-menu-container .user-dropdown {
+  transition: opacity 0.2s 0.7s, transform 0.2s 0.7s; /* 700ms grace period */
 }
 
+.user-menu-container:hover .user-dropdown,
 .user-dropdown:hover {
-  transition-delay: 0s; /* Keep visible while hovering dropdown */
+  transition-delay: 0s; /* Cancel delay when hovering */
 }
 
 .user-info {

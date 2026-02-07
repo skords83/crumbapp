@@ -1,6 +1,6 @@
 {
   "name": "@crumbapp/web",
-  "version": "0.5.2",
+  "version": "0.5.4",
   "description": "Crumb - Perfect Bread, Perfect Timing. Bread baking recipe manager.",
   "private": true,
   "dependencies": {
