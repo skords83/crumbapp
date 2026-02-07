@@ -1,0 +1,221 @@
+.baking-scheduler {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.scheduler-header h2 {
+  color: #8B4513;
+  margin-bottom: 0.5rem;
+}
+
+.scheduler-header .source {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.time-selector {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.time-selector label {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: #8B4513;
+}
+
+.time-selector input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.time-selector input:focus {
+  outline: none;
+  border-color: #8B4513;
+}
+
+.schedule-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summary-item {
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.summary-item.highlight {
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+}
+
+.summary-item .label {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.summary-item .value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.timeline h3 {
+  margin-bottom: 1rem;
+  color: #8B4513;
+}
+
+.timeline-step {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #fafafa;
+  border-left: 4px solid #ccc;
+}
+
+.timeline-step.fermentation {
+  border-left-color: #17a2b8;
+  background: #e7f6f8;
+}
+
+.timeline-step.baking {
+  border-left-color: #ff6b6b;
+  background: #ffe7e7;
+}
+
+.timeline-step.prep {
+  border-left-color: #8B4513;
+  background: #f5ede5;
+}
+
+.timeline-step.cooling {
+  border-left-color: #6c757d;
+  background: #e9ecef;
+}
+
+.step-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 0.5rem;
+}
+
+.step-header strong {
+  color: #333;
+  font-size: 1.05rem;
+}
+
+.step-header .duration {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: normal;
+  background: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.step-time {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.step-instructions {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 6px;
+}
+
+.scheduler-actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.start-button {
+  padding: 1rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.start-button:hover {
+  background: #218838;
+}
+
+.cancel-button {
+  padding: 0.75rem;
+  background: white;
+  color: #666;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.cancel-button:hover {
+  border-color: #999;
+  color: #333;
+}
+
+.nighttime-warning {
+  background: #fff3cd;
+  border-left-color: #ffc107;
+}
+
+.start-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .schedule-summary {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline-step {
+    flex-direction: column;
+    align-items: start;
+  }
+  
+  .step-icon {
+    font-size: 1.5rem;
+  }
+}

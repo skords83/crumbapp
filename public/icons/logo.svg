@@ -1,0 +1,117 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sketch-style bread loaf, half cut showing crumb -->
+  
+  <!-- Back half of bread (whole) -->
+  <path d="M 30 80 
+           C 30 60, 50 45, 80 45
+           C 100 45, 115 50, 120 65
+           L 120 130
+           C 115 145, 100 150, 80 150
+           C 50 150, 30 135, 30 115
+           Z"
+        fill="#8B7355"
+        stroke="#6B5D4F" 
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+  
+  <!-- Crust texture on whole side (small dots and lines) -->
+  <circle cx="55" cy="70" r="2" fill="#6B5D4F" opacity="0.4"/>
+  <circle cx="70" cy="65" r="1.5" fill="#6B5D4F" opacity="0.4"/>
+  <circle cx="85" cy="72" r="2" fill="#6B5D4F" opacity="0.4"/>
+  <circle cx="95" cy="80" r="1.5" fill="#6B5D4F" opacity="0.4"/>
+  <circle cx="60" cy="90" r="2" fill="#6B5D4F" opacity="0.4"/>
+  <circle cx="75" cy="95" r="1.5" fill="#6B5D4F" opacity="0.4"/>
+  
+  <!-- Score marks on top (sketch style) -->
+  <path d="M 50 60 Q 70 58 90 62" 
+        stroke="#6B5D4F" 
+        stroke-width="2" 
+        fill="none"
+        stroke-linecap="round"
+        opacity="0.7"/>
+  <path d="M 45 75 Q 70 72 95 78" 
+        stroke="#6B5D4F" 
+        stroke-width="2" 
+        fill="none"
+        stroke-linecap="round"
+        opacity="0.7"/>
+  
+  <!-- Cut face (crumb) -->
+  <path d="M 120 65 
+           L 120 130
+           C 120 140, 130 145, 140 145
+           L 140 50
+           C 130 50, 120 55, 120 65
+           Z"
+        fill="#F5F5DC"
+        stroke="#C4B5A0" 
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+  
+  <!-- Crumb texture (air pockets - sketch style) -->
+  <!-- Large pores -->
+  <ellipse cx="128" cy="75" rx="4" ry="5" fill="none" stroke="#DDD8C8" stroke-width="1.5" transform="rotate(-10 128 75)"/>
+  <ellipse cx="132" cy="95" rx="5" ry="6" fill="none" stroke="#DDD8C8" stroke-width="1.5" transform="rotate(15 132 95)"/>
+  <ellipse cx="128" cy="115" rx="4" ry="4" fill="none" stroke="#DDD8C8" stroke-width="1.5" transform="rotate(-5 128 115)"/>
+  <ellipse cx="133" cy="130" rx="3.5" ry="4" fill="none" stroke="#DDD8C8" stroke-width="1.5" transform="rotate(20 133 130)"/>
+  
+  <!-- Medium pores -->
+  <circle cx="125" cy="85" r="2.5" fill="none" stroke="#D5D0C0" stroke-width="1.2"/>
+  <circle cx="130" cy="105" r="2" fill="none" stroke="#D5D0C0" stroke-width="1.2"/>
+  <circle cx="126" cy="123" r="2.5" fill="none" stroke="#D5D0C0" stroke-width="1.2"/>
+  <circle cx="135" cy="68" r="2" fill="none" stroke="#D5D0C0" stroke-width="1.2"/>
+  <circle cx="135" cy="85" r="1.8" fill="none" stroke="#D5D0C0" stroke-width="1"/>
+  
+  <!-- Small pores (dots) -->
+  <circle cx="127" cy="70" r="1" fill="#D5D0C0"/>
+  <circle cx="131" cy="80" r="0.8" fill="#D5D0C0"/>
+  <circle cx="129" cy="100" r="1" fill="#D5D0C0"/>
+  <circle cx="134" cy="110" r="0.8" fill="#D5D0C0"/>
+  <circle cx="130" cy="120" r="1" fill="#D5D0C0"/>
+  <circle cx="127" cy="135" r="0.8" fill="#D5D0C0"/>
+  
+  <!-- Front half crust -->
+  <path d="M 140 50
+           C 155 50, 170 60, 170 80
+           L 170 115
+           C 170 135, 155 145, 140 145
+           L 140 50
+           Z"
+        fill="#8B7355"
+        stroke="#6B5D4F" 
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+  
+  <!-- Crust texture on front -->
+  <circle cx="150" cy="70" r="2" fill="#6B5D4F" opacity="0.4"/>
+  <circle cx="160" cy="75" r="1.5" fill="#6B5D4F" opacity="0.4"/>
+  <circle cx="155" cy="90" r="2" fill="#6B5D4F" opacity="0.4"/>
+  <circle cx="148" cy="105" r="1.5" fill="#6B5D4F" opacity="0.4"/>
+  <circle cx="162" cy="100" r="2" fill="#6B5D4F" opacity="0.4"/>
+  <circle cx="155" cy="120" r="1.5" fill="#6B5D4F" opacity="0.4"/>
+  
+  <!-- Score marks on front -->
+  <path d="M 145 62 Q 155 60 165 64" 
+        stroke="#6B5D4F" 
+        stroke-width="2" 
+        fill="none"
+        stroke-linecap="round"
+        opacity="0.7"/>
+  <path d="M 143 80 Q 155 77 167 82" 
+        stroke="#6B5D4F" 
+        stroke-width="2" 
+        fill="none"
+        stroke-linecap="round"
+        opacity="0.7"/>
+  
+  <!-- Sketch-style hatching for depth on crust -->
+  <path d="M 35 85 L 38 88" stroke="#6B5D4F" stroke-width="1" opacity="0.3"/>
+  <path d="M 40 95 L 43 98" stroke="#6B5D4F" stroke-width="1" opacity="0.3"/>
+  <path d="M 35 105 L 38 108" stroke="#6B5D4F" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Bottom shadow (sketch style) -->
+  <ellipse cx="100" cy="152" rx="65" ry="6" fill="#6B5D4F" opacity="0.15"/>
+</svg>

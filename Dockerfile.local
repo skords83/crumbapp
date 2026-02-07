@@ -1,0 +1,83 @@
+# Local Development Dockerfile
+# Builds everything inside Docker - no pre-build needed!
+
+FROM node:20-alpine AS builder
+
+WORKDIR /build
+
+# Install frontend dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy source and build
+COPY public ./public
+COPY src ./src
+
+# Build with CI=false to ignore warnings
+ENV CI=false
+RUN npm run build && \
+    ls -la /build/build && \
+    echo "Build directory contents:" && \
+    find /build/build -type f | head -10 || \
+    (echo "BUILD FAILED!" && exit 1)
+
+# Production stage
+FROM node:20-alpine
+
+# Install nginx
+RUN apk add --no-cache nginx wget
+
+# Create directories
+RUN mkdir -p /app/backend /app/frontend/build /run/nginx /var/log/nginx
+
+# Copy built frontend from builder stage
+COPY --from=builder /build/build /app/frontend/build
+
+# Setup backend
+WORKDIR /app/backend
+COPY backend/package*.json ./
+RUN npm install --production
+
+COPY backend/server.js ./
+COPY backend/db.js ./
+COPY backend/schema.sql ./
+
+# Nginx config
+RUN printf "user nginx;\n\
+worker_processes 1;\n\
+error_log /var/log/nginx/error.log warn;\n\
+pid /run/nginx/nginx.pid;\n\
+events { worker_connections 1024; }\n\
+http {\n\
+  include /etc/nginx/mime.types;\n\
+  default_type application/octet-stream;\n\
+  server {\n\
+    listen 80;\n\
+    location / {\n\
+      root /app/frontend/build;\n\
+      try_files \$uri /index.html;\n\
+    }\n\
+    location /api/ {\n\
+      proxy_pass http://127.0.0.1:3001;\n\
+    }\n\
+    location /health {\n\
+      proxy_pass http://127.0.0.1:3001/health;\n\
+    }\n\
+  }\n\
+}" > /etc/nginx/nginx.conf
+
+# Startup script
+RUN printf "#!/bin/sh\n\
+cd /app/backend\n\
+node server.js &\n\
+sleep 2\n\
+nginx -g 'daemon off;'\n" > /app/start.sh && chmod +x /app/start.sh
+
+WORKDIR /app
+
+EXPOSE 80
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s \
+  CMD wget -q -O /dev/null http://localhost/health || exit 1
+
+CMD ["/app/start.sh"]

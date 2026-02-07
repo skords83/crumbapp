@@ -1,0 +1,327 @@
+.recipe-editor {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.editor-header h2 {
+  color: var(--brown-primary);
+  margin: 0;
+}
+
+.editor-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.editor-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.editor-section {
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 
+    0 2px 4px var(--shadow),
+    0 4px 8px var(--shadow);
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.editor-section:hover {
+  box-shadow: 
+    0 4px 8px var(--shadow),
+    0 8px 16px var(--shadow-hover);
+}
+
+.editor-section h3 {
+  color: var(--brown-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--brown-primary);
+  box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.1);
+}
+
+.image-preview {
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.image-preview img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.ingredient-edit,
+.step-edit {
+  background: var(--bg-tertiary);
+  padding: 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--brown-primary);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ingredient-edit:hover,
+.step-edit:hover {
+  transform: translateX(4px);
+}
+
+.ingredient-header,
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ingredient-header button,
+.step-header button {
+  background: #dc3545;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.ingredient-header button:hover,
+.step-header button:hover {
+  background: #c82333;
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.ingredient-edit input,
+.ingredient-edit select,
+.step-edit input,
+.step-edit select,
+.step-edit textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ingredient-edit input:focus,
+.ingredient-edit select:focus,
+.step-edit input:focus,
+.step-edit select:focus,
+.step-edit textarea:focus {
+  outline: none;
+  border-color: var(--brown-primary);
+  box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.1);
+}
+
+.ingredient-row,
+.step-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.add-btn {
+  width: 100%;
+  padding: 0.875rem;
+  background: var(--bg-primary);
+  border: 2px dashed var(--brown-primary);
+  color: var(--brown-primary);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.add-btn:hover {
+  background: var(--brown-primary);
+  color: white;
+  border-style: solid;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.add-btn:active {
+  transform: scale(0.98);
+}
+
+.cancel-btn,
+.save-btn {
+  padding: 0.875rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.cancel-btn {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.cancel-btn:hover {
+  background: var(--border-color);
+  box-shadow: 0 4px 8px var(--shadow-hover);
+}
+
+.save-btn {
+  background: var(--brown-primary);
+  color: white;
+}
+
+.save-btn:hover:not(:disabled) {
+  background: var(--brown-light);
+  box-shadow: 0 4px 8px var(--shadow-hover);
+}
+
+.save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cancel-btn:active:not(:disabled),
+.save-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Material Ripple Effect */
+.cancel-btn::after,
+.save-btn::after,
+.add-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.cancel-btn:active::after,
+.save-btn:active::after,
+.add-btn:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+.editor-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  box-shadow: 0 -2px 4px var(--shadow);
+}
+
+@media (max-width: 768px) {
+  .editor-header,
+  .editor-footer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .editor-actions {
+    width: 100%;
+  }
+
+  .cancel-btn,
+  .save-btn {
+    flex: 1;
+  }
+
+  .ingredient-row,
+  .step-row {
+    grid-template-columns: 1fr;
+  }
+
+  .editor-section {
+    padding: 1.5rem;
+  }
+}
+
+/* Material elevation classes for reuse */
+.elevation-1 {
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.elevation-2 {
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+.elevation-3 {
+  box-shadow: 0 6px 12px var(--shadow);
+}
+
+.elevation-4 {
+  box-shadow: 0 8px 16px var(--shadow-hover);
+}

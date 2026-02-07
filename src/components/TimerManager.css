@@ -1,0 +1,257 @@
+.timer-manager {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.recipe-header {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.recipe-header h2 {
+  color: #8B4513;
+  margin-bottom: 0.5rem;
+}
+
+.progress-overview {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.current-step {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.step-icon-large {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.current-step h3 {
+  color: #8B4513;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.timer-display {
+  margin-bottom: 2rem;
+}
+
+.timer-display .time {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #8B4513;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.5rem;
+}
+
+.timer-display .time.complete {
+  color: #28a745;
+  animation: celebrate 0.5s ease-in-out;
+}
+
+@keyframes celebrate {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.timer-display .time-label {
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8B4513 0%, #D2691E 100%);
+  transition: width 1s linear;
+  border-radius: 4px;
+}
+
+.step-instructions {
+  padding: 1.5rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border-left: 4px solid #8B4513;
+  text-align: left;
+  line-height: 1.6;
+  color: #333;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.control-btn {
+  flex: 1;
+  padding: 0.75rem;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.control-btn:hover:not(:disabled) {
+  border-color: #8B4513;
+  color: #8B4513;
+}
+
+.control-btn:disabled {
+  opacity: 0.3;
+}
+
+.pause-btn {
+  background: #ffc107;
+  color: white;
+  border-color: #ffc107;
+}
+
+.pause-btn:hover:not(:disabled) {
+  background: #e0a800;
+  border-color: #e0a800;
+}
+
+.upcoming-steps {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+
+.upcoming-steps h4 {
+  color: #8B4513;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.upcoming-step {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.upcoming-step:last-child {
+  margin-bottom: 0;
+}
+
+.upcoming-step .step-icon {
+  font-size: 1.5rem;
+}
+
+.upcoming-step .step-name {
+  flex: 1;
+  color: #333;
+  font-weight: 500;
+}
+
+.upcoming-step .step-duration {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.completion-screen {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.celebration {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: bounce 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+.completion-screen h3 {
+  color: #8B4513;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.completion-screen p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.complete-btn {
+  padding: 1rem 2rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.complete-btn:hover {
+  background: #218838;
+}
+
+.emergency-actions {
+  margin-top: 1rem;
+}
+
+.abort-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: white;
+  color: #dc3545;
+  border: 2px solid #dc3545;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.abort-btn:hover {
+  background: #dc3545;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .timer-display .time {
+    font-size: 3rem;
+  }
+  
+  .current-step h3 {
+    font-size: 1.2rem;
+  }
+  
+  .timer-controls {
+    flex-direction: column;
+  }
+}
