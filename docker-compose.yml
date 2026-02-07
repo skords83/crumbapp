@@ -30,7 +30,7 @@ services:
       dockerfile: Dockerfile.local
     container_name: crumb-app
     ports:
-      - "8080:80"  # Use 8080 to avoid needing root privileges
+      - "9083:80"  # Use 8080 to avoid needing root privileges
     environment:
       - PORT=3001
       - NODE_ENV=production

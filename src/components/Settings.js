@@ -117,7 +117,7 @@ function Settings() {
           <div className="app-info">
             <div className="info-row">
               <span className="info-label">Version</span>
-              <span className="info-value">0.4.4</span>
+              <span className="info-value">0.5.0</span>
             </div>
             <div className="info-row">
               <span className="info-label">Tagline</span>

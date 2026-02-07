@@ -52,13 +52,13 @@ docker-compose up -d
 
 # Or pull image directly
 docker pull ghcr.io/skords83/crumbapp:latest
-docker run -d -p 8080:80 \
+docker run -d -p 9083:80 \
   -e DB_HOST=your-postgres-host \
   -e DB_PASSWORD=your-password \
   ghcr.io/skords83/crumbapp:latest
 ```
 
-Access: `http://localhost:8080`
+Access: `http://localhost:9083`
 
 ### Local Development
 
@@ -97,7 +97,7 @@ services:
   app:
     image: ghcr.io/skords83/crumbapp:latest
     ports:
-      - "8080:80"
+      - "9083:80"
     environment:
       DB_HOST: db
       DB_PORT: 5432

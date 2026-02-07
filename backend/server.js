@@ -596,6 +596,27 @@ app.post('/api/auth/login', async (req, res) => {
   }
 });
 
+// Health check endpoint with DB status
+app.get('/api/health', async (req, res) => {
+  try {
+    // Check DB connection
+    const result = await db.query('SELECT NOW()');
+    res.json({
+      status: 'healthy',
+      version: '0.5.0',
+      database: 'connected',
+      timestamp: result.rows[0].now
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'unhealthy',
+      version: '0.5.0',
+      database: 'disconnected',
+      error: error.message
+    });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`🍞 Crumb Backend running on port ${PORT}`);
 });
