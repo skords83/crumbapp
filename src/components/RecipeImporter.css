@@ -321,3 +321,17 @@
   border-color: var(--border-color);
   color: var(--text-primary);
 }
+
+/* v0.5.9 - Fix URL Import Dark Mode */
+[data-theme="dark"] .url-import {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .url-import h2 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .url-import form {
+  background: transparent;
+}

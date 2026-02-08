@@ -1,7 +1,7 @@
 import React from 'react';
 import './RecipeDetail.css';
 
-function RecipeDetail({ recipe, onBack, onStartBaking, onEdit, onToggleFavorite, isFavorite }) {
+function RecipeDetail({ recipe, onBack, onStartBaking, onEdit, onToggleFavorite, isFavorite, onDelete }) {
   const formatDuration = (minutes) => {
     if (minutes < 60) {
       return `${minutes} Min`;
@@ -79,6 +79,23 @@ function RecipeDetail({ recipe, onBack, onStartBaking, onEdit, onToggleFavorite,
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
             </svg>
           </button>
+          <button 
+            className="icon-btn delete-button"
+            onClick={() => {
+              if (window.confirm(`Möchten Sie "${recipe.name}" wirklich dauerhaft löschen? Diese Aktion kann nicht rückgängig gemacht werden.`)) {
+                onDelete(recipe.id);
+                onBack();
+              }
+            }}
+            title="Rezept löschen"
+          >
+            <svg viewBox="0 0 24 24">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              <line x1="10" y1="11" x2="10" y2="17"/>
+              <line x1="14" y1="11" x2="14" y2="17"/>
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -153,15 +170,17 @@ function RecipeDetail({ recipe, onBack, onStartBaking, onEdit, onToggleFavorite,
                   <span className="ingredient-amount">
                     {ingredient.amount} {ingredient.unit}
                   </span>
-                  {ingredient.temperature && (
+                  {ingredient.temperature ? (
                     <span className="ingredient-temp">
                       <svg viewBox="0 0 24 24" className="inline-icon">
                         <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0z"/>
                       </svg>
                       {ingredient.temperature}
                     </span>
+                  ) : (
+                    <span className="ingredient-placeholder"></span>
                   )}
-                  {ingredient.notes && (
+                  {ingredient.notes ? (
                     <span className="ingredient-notes">
                       <svg viewBox="0 0 24 24" className="inline-icon">
                         <circle cx="12" cy="12" r="10"/>
@@ -169,6 +188,8 @@ function RecipeDetail({ recipe, onBack, onStartBaking, onEdit, onToggleFavorite,
                       </svg>
                       {ingredient.notes}
                     </span>
+                  ) : (
+                    <span className="ingredient-placeholder"></span>
                   )}
                 </div>
               ))}

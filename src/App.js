@@ -329,6 +329,7 @@ function App() {
             onStartBaking={() => setView('schedule')}
             onEdit={() => handleEditRecipe(activeRecipe)}
             onToggleFavorite={handleToggleFavorite}
+            onDelete={handleDeleteRecipe}
           />
         )}
 
