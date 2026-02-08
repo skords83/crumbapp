@@ -159,7 +159,7 @@
 }
 
 .recipe-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
@@ -214,9 +214,9 @@
 }
 
 [data-theme="dark"] .recipe-type-badge {
-  background: rgba(212, 165, 116, 0.15);
-  color: var(--brown-primary);
-  border: 1px solid rgba(212, 165, 116, 0.3);
+  background: rgba(139, 115, 85, 0.9);
+  color: white;
+  border: 1px solid rgba(139, 115, 85, 1);
 }
 
 /* Favorite Heart - Top Right */

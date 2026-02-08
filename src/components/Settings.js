@@ -41,7 +41,7 @@ function Settings() {
   return (
     <div className="settings">
       <div className="settings-header">
-        <h2>⚙️ Einstellungen</h2>
+        <h2>Einstellungen</h2>
         <p className="settings-subtitle">Passe Crumb an deine Vorlieben an</p>
       </div>
 
@@ -117,7 +117,7 @@ function Settings() {
           <div className="app-info">
             <div className="info-row">
               <span className="info-label">Version</span>
-              <span className="info-value">0.5.6</span>
+              <span className="info-value">0.5.7</span>
             </div>
             <div className="info-row">
               <span className="info-label">Tagline</span>

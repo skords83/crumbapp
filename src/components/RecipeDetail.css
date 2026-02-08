@@ -575,10 +575,17 @@
   align-items: center;
   gap: 0.25rem;
   font-size: 0.8125rem;
-  color: var(--text-secondary);
+  color: white;
   padding: 0.25rem 0.5rem;
-  background: var(--bg-tertiary);
+  background: rgba(139, 115, 85, 0.8);
   border-radius: 4px;
+}
+
+[data-theme="dark"] .ingredient-temp,
+[data-theme="dark"] .ingredient-notes {
+  background: rgba(212, 165, 116, 0.3);
+  color: var(--brown-primary);
+  border: 1px solid rgba(212, 165, 116, 0.5);
 }
 
 .inline-icon {

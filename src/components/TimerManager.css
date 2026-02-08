@@ -255,3 +255,29 @@
     flex-direction: column;
   }
 }
+
+/* v0.5.7 - Dark Mode Fixes */
+[data-theme="dark"] .timer-card,
+[data-theme="dark"] .step-card,
+[data-theme="dark"] .upcoming-steps {
+  background: linear-gradient(145deg, #1a1a1a, #222222);
+  border-color: #2a2a2a;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .current-step-name,
+[data-theme="dark"] .step-card h3 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .step-card p {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .progress-bar {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .progress-fill {
+  background: linear-gradient(90deg, var(--brown-primary), var(--brown-secondary));
+}

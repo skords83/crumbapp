@@ -145,13 +145,13 @@ body {
   stroke-width: 2;
 }
 
-/* User Avatar - Rund wie im Mockup */
+/* User Avatar - Match icon button style */
 .user-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: white;
-  color: var(--brown-primary);
+  width: 42px;
+  height: 42px;
+  border-radius: 10px; /* Square like icon buttons */
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -159,11 +159,12 @@ body {
   font-size: 0.875rem;
   cursor: pointer;
   margin-left: 0.5rem;
-  transition: transform 0.2s;
+  transition: all 0.2s;
+  border: none;
 }
 
 .user-avatar:hover {
-  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* User Dropdown */
@@ -1173,8 +1174,12 @@ body[data-app-version="0.5.0"] {
 /* v0.5.6 - Fix sticky header to prevent collapsing */
 .app-header {
   min-height: 82px; /* Prevent collapse */
+  height: 82px; /* Fixed height */
+  flex-shrink: 0;
 }
 
 .nav-tabs {
   min-height: 57px; /* Prevent collapse */
+  height: 57px; /* Fixed height */
+  flex-shrink: 0;
 }
