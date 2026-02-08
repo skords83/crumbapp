@@ -93,8 +93,13 @@ function App() {
   };
 
   const handleDeleteRecipe = (id) => {
-    setRecipes(recipes.filter(r => r.id !== id));
-    setFavorites(favorites.filter(fid => fid !== id));
+    const recipe = recipes.find(r => r.id === id);
+    const recipeName = recipe ? recipe.name : 'dieses Rezept';
+    
+    if (window.confirm(`Möchten Sie "${recipeName}" wirklich dauerhaft löschen? Diese Aktion kann nicht rückgängig gemacht werden.`)) {
+      setRecipes(recipes.filter(r => r.id !== id));
+      setFavorites(favorites.filter(fid => fid !== id));
+    }
   };
 
   const handleToggleFavorite = (id) => {
@@ -457,7 +462,11 @@ function App() {
       </nav>
 
       {/* Floating Action Button - Desktop Browser */}
-      <button className="fab" onClick={() => setView('import')}>
+      <button 
+        className="fab" 
+        onClick={() => setView('import')}
+        title="Rezept importieren"
+      >
         <svg viewBox="0 0 24 24">
           <line x1="12" y1="5" x2="12" y2="19"/>
           <line x1="5" y1="12" x2="19" y2="12"/>

@@ -275,13 +275,20 @@
   line-height: 1.3;
 }
 
-/* Meta Info - ONLY Time + Steps with clean icons */
+/* Meta Info - ONLY Time + Steps side-by-side */
 .recipe-meta {
   display: flex;
   gap: 1.25rem;
   font-size: 0.875rem;
   color: var(--text-secondary);
   margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+}
+
+[data-theme="dark"] .recipe-meta {
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .recipe-meta-item {

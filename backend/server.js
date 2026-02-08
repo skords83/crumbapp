@@ -145,6 +145,7 @@ class RecipeParser {
     // Try to extract ingredients - WPRM Plugin support
     const ingredients = [];
     let ingredientIndex = 0;
+    let inPlanungsbeispiel = false;
     
     // Try WPRM (WordPress Recipe Maker) first
     $('.wprm-recipe-ingredient').each((i, elem) => {
@@ -155,10 +156,27 @@ class RecipeParser {
       }
     });
     
-    // Fallback: Try lists
+    // Fallback: Try lists (but skip Planungsbeispiel section!)
     if (ingredients.length === 0) {
-      $('.entry-content ul li, .entry-content ol li').each((i, elem) => {
+      $('.entry-content ul li, .entry-content ol li, .entry-content p').each((i, elem) => {
         const text = $(elem).text().trim();
+        
+        // Check if we're entering Planungsbeispiel section
+        if (text.match(/planungsbeispiel/i) || text.match(/gesamtzubereitungszeit/i)) {
+          inPlanungsbeispiel = true;
+          return; // Skip this element
+        }
+        
+        // Skip time-based entries (format: "08:44 Uhr" or "16:00 Uhr")
+        if (text.match(/^\d{1,2}:\d{2}\s*(Uhr)?/i)) {
+          return; // Skip time entries
+        }
+        
+        // Stop parsing ingredients if in Planungsbeispiel section
+        if (inPlanungsbeispiel) {
+          return;
+        }
+        
         // Check if it looks like an ingredient
         if (text.match(/\d+\s*(g|kg|ml|l|EL|TL|Prise|Stück|%)/i) || 
             text.match(/^(ca\.|etwa)\s+\d+/i) ||
@@ -176,6 +194,12 @@ class RecipeParser {
         if (cells.length >= 2) {
           const amount = $(cells[0]).text().trim();
           const ingredient = $(cells[1]).text().trim();
+          
+          // Skip if it's a time entry
+          if (amount.match(/^\d{1,2}:\d{2}/)) {
+            return;
+          }
+          
           if (amount.match(/\d/) && ingredient) {
             ingredients.push({
               name: ingredient,

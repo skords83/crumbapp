@@ -149,32 +149,26 @@ function RecipeDetail({ recipe, onBack, onStartBaking, onEdit, onToggleFavorite,
             <div className="ingredients-list">
               {recipe.ingredients.map((ingredient, index) => (
                 <div key={index} className="ingredient-item">
-                  <div className="ingredient-main">
-                    <span className="ingredient-name">{ingredient.name}</span>
-                    <span className="ingredient-amount">
-                      {ingredient.amount} {ingredient.unit}
+                  <span className="ingredient-name">{ingredient.name}</span>
+                  <span className="ingredient-amount">
+                    {ingredient.amount} {ingredient.unit}
+                  </span>
+                  {ingredient.temperature && (
+                    <span className="ingredient-temp">
+                      <svg viewBox="0 0 24 24" className="inline-icon">
+                        <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0z"/>
+                      </svg>
+                      {ingredient.temperature}
                     </span>
-                  </div>
-                  {(ingredient.temperature || ingredient.notes) && (
-                    <div className="ingredient-meta">
-                      {ingredient.temperature && (
-                        <span className="ingredient-temp">
-                          <svg viewBox="0 0 24 24" className="inline-icon">
-                            <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0z"/>
-                          </svg>
-                          {ingredient.temperature}
-                        </span>
-                      )}
-                      {ingredient.notes && (
-                        <span className="ingredient-notes">
-                          <svg viewBox="0 0 24 24" className="inline-icon">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 16v-4M12 8h.01"/>
-                          </svg>
-                          {ingredient.notes}
-                        </span>
-                      )}
-                    </div>
+                  )}
+                  {ingredient.notes && (
+                    <span className="ingredient-notes">
+                      <svg viewBox="0 0 24 24" className="inline-icon">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 16v-4M12 8h.01"/>
+                      </svg>
+                      {ingredient.notes}
+                    </span>
                   )}
                 </div>
               ))}

@@ -309,13 +309,26 @@ body {
   gap: 0.5rem;
 }
 
+[data-theme="dark"] .nav-tab {
+  color: #999; /* Lighter in dark mode */
+}
+
 .nav-tab:hover {
   color: #8B7355;
+}
+
+[data-theme="dark"] .nav-tab:hover {
+  color: var(--brown-primary);
 }
 
 .nav-tab.active {
   color: #8B7355;
   border-bottom-color: #8B7355;
+}
+
+[data-theme="dark"] .nav-tab.active {
+  color: var(--brown-primary);
+  border-bottom-color: var(--brown-primary);
 }
 
 .nav-tab svg {
@@ -1155,4 +1168,13 @@ body[data-app-version="0.5.0"] {
 
 [data-theme="dark"] .fab:hover {
   box-shadow: 0 6px 20px rgba(212, 165, 116, 0.6);
+}
+
+/* v0.5.6 - Fix sticky header to prevent collapsing */
+.app-header {
+  min-height: 82px; /* Prevent collapse */
+}
+
+.nav-tabs {
+  min-height: 57px; /* Prevent collapse */
 }
