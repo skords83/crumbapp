@@ -93,13 +93,9 @@ function App() {
   };
 
   const handleDeleteRecipe = (id) => {
-    const recipe = recipes.find(r => r.id === id);
-    const recipeName = recipe ? recipe.name : 'dieses Rezept';
-    
-    if (window.confirm(`Möchten Sie "${recipeName}" wirklich dauerhaft löschen? Diese Aktion kann nicht rückgängig gemacht werden.`)) {
-      setRecipes(recipes.filter(r => r.id !== id));
-      setFavorites(favorites.filter(fid => fid !== id));
-    }
+    // Confirmation already happens in RecipeDetail component
+    setRecipes(recipes.filter(r => r.id !== id));
+    setFavorites(favorites.filter(fid => fid !== id));
   };
 
   const handleToggleFavorite = (id) => {

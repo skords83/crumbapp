@@ -166,10 +166,10 @@ function RecipeDetail({ recipe, onBack, onStartBaking, onEdit, onToggleFavorite,
             <div className="ingredients-list">
               {recipe.ingredients.map((ingredient, index) => (
                 <div key={index} className="ingredient-item">
-                  <span className="ingredient-name">{ingredient.name}</span>
                   <span className="ingredient-amount">
                     {ingredient.amount} {ingredient.unit}
                   </span>
+                  <span className="ingredient-name">{ingredient.name}</span>
                   {ingredient.temperature ? (
                     <span className="ingredient-temp">
                       <svg viewBox="0 0 24 24" className="inline-icon">

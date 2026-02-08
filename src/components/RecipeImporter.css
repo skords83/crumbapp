@@ -335,3 +335,18 @@
 [data-theme="dark"] .url-import form {
   background: transparent;
 }
+
+/* v0.6.0 - Mode Toggle Dark Mode */
+[data-theme="dark"] .mode-toggle {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .mode-toggle button {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .mode-toggle button.active {
+  background: var(--bg-secondary);
+  color: var(--brown-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
