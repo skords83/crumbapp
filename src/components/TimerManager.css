@@ -281,3 +281,37 @@
 [data-theme="dark"] .progress-fill {
   background: linear-gradient(90deg, var(--brown-primary), var(--brown-secondary));
 }
+
+/* v0.6.1 - More dark mode fixes */
+[data-theme="dark"] .timer-manager {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .recipe-header {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .step-list {
+  background: transparent;
+}
+
+[data-theme="dark"] .step-item {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .timer-display {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .abort-btn {
+  background: rgba(220, 53, 69, 0.1);
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+}
+
+[data-theme="dark"] .abort-btn:hover {
+  background: rgba(220, 53, 69, 0.2);
+}

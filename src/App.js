@@ -136,7 +136,7 @@ function App() {
 
   const handleCompleteBaking = () => {
     setScheduledBake(null);
-    localStorage.removeItem('brotzeit-schedule');
+    localStorage.removeItem('crumb-schedule');
     setView('list');
   };
 
