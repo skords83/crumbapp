@@ -720,7 +720,7 @@ body[data-app-version="0.5.0"] {
   background: var(--brown-primary);
   color: white;
   border: none;
-  border-radius: 50%;
+  border-radius: 12px;
   box-shadow: 0 4px 12px rgba(139, 115, 85, 0.4);
   cursor: pointer;
   display: flex;

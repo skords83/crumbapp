@@ -135,13 +135,6 @@ function RecipeImporter({ onRecipeImported }) {
           </form>
 
           {error && <div className="error">{error}</div>}
-
-          <div className="demo-links">
-            <p>Zum Testen:</p>
-            <button onClick={() => setUrl('https://www.ploetzblog.de/example')}>
-              Demo-URL laden
-            </button>
-          </div>
         </div>
       ) : (
         <div className="manual-input">

@@ -298,3 +298,26 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* v0.5.8 - Dark Mode Fixes */
+[data-theme="dark"] .recipe-importer {
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] .import-card,
+[data-theme="dark"] .import-form {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .import-card h3 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] input[type="url"],
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] textarea {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}

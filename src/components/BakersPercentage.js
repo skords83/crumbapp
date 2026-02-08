@@ -62,7 +62,7 @@ function BakersPercentage() {
   return (
     <div className="bakers-percentage">
       <div className="calculator-header">
-        <h2>🧮 Bäckerprozent-Rechner</h2>
+        <h2>Bäckerprozent-Rechner</h2>
         <p className="description">
           Berechne Bäckerprozente und skaliere Rezepte präzise
         </p>

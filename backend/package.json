@@ -1,6 +1,6 @@
 {
   "name": "@crumbapp/backend",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "Backend API for Crumb bread baking app",
   "main": "server.js",
   "scripts": {

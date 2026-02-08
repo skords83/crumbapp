@@ -110,17 +110,8 @@ function App() {
     }
   };
 
-  const handleFilterChange = (key, value) => {
-    if (key === 'reset') {
-      setFilters({
-        showFavoritesOnly: false,
-        recipeType: 'all',
-        finishToday: false,
-        respectNighttime: false
-      });
-    } else {
-      setFilters({ ...filters, [key]: value });
-    }
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
   };
 
   const handleLogin = (userData) => {

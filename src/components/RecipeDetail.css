@@ -148,9 +148,14 @@
 }
 
 .ingredients-list {
-  background: #f9f9f9;
+  background: var(--bg-tertiary);
   border-radius: 8px;
   padding: 1.5rem;
+}
+
+[data-theme="dark"] .ingredients-list {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #2a2a2a;
 }
 
 .ingredient-item {
@@ -542,12 +547,13 @@
   stroke-width: 2;
 }
 
-/* v0.5.6 - Compact Ingredients in ONE line */
+/* v0.5.6 - Compact Ingredients in ONE line - Table Style */
 .ingredient-item {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
   gap: 1rem;
-  padding: 0.5rem 0;
+  align-items: center;
+  padding: 0.75rem 0;
   border-bottom: 1px solid var(--border-color);
   font-size: 0.9375rem;
 }
@@ -557,9 +563,9 @@
 }
 
 .ingredient-name {
-  flex: 1;
   font-weight: 500;
   color: var(--text-primary);
+  padding-left: 0.5rem;
 }
 
 .ingredient-amount {
@@ -567,6 +573,7 @@
   color: var(--brown-primary);
   min-width: 80px;
   text-align: right;
+  justify-self: end;
 }
 
 .ingredient-temp,
@@ -579,6 +586,8 @@
   padding: 0.25rem 0.5rem;
   background: rgba(139, 115, 85, 0.8);
   border-radius: 4px;
+  white-space: nowrap;
+  justify-self: end;
 }
 
 [data-theme="dark"] .ingredient-temp,
@@ -595,4 +604,13 @@
   fill: none;
   stroke-width: 2;
   flex-shrink: 0;
+}
+
+/* v0.5.8 - Dark Mode Container Fixes */
+[data-theme="dark"] .recipe-detail {
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] .recipe-info {
+  background: transparent;
 }
